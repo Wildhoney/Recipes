@@ -14,6 +14,9 @@ if os.environ.get("PORT"):
 
 else:
 
+    # Service Configuration
+    SERVER_NAME = "0.0.0.0:3507"
+
     # Mongo Configuration
     MONGO_HOST = "localhost"
     MONGO_PORT = 27017
