@@ -14,14 +14,34 @@ if os.environ.get('PORT'):
 
 else:
 
-    # Service Configuration
-    SERVER_NAME = '0.0.0.0:3507'
-
     # Mongo Configuration
-    MONGO_HOST = 'localhost'
-    MONGO_PORT = 27017
-    MONGO_DBNAME = 'recipe'
+    MONGO_HOST = 'lennon.mongohq.com'
+    MONGO_PORT = 10042
+    MONGO_USERNAME = 'heroku'
+    MONGO_PASSWORD = '6x-3Jj1DA01q9RkFdM7SazZmahEkqaO1YG_jjTgIm6ZAck3N-Aa6f19uZeZvT8t41Fk_lzGSWZUEwEJOnsltDA'
+    MONGO_DBNAME = 'app30926695'
 
+# Schema Details
+schema_recipes = {
+
+    'name': {
+        'type': 'string',
+        'minlength': 3,
+        'maxlength': 32,
+        'required': True,
+        'unique': True
+    },
+    'ingredients': {
+        'type': 'list',
+        'required': True
+    }
+
+}
+
+recipes = {
+    'schema': schema_recipes,
+    'resource_methods': ['GET', 'POST']
+}
 
 # API Configuration
-DOMAIN = {'people': {}}
+DOMAIN = {'recipes': recipes}
