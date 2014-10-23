@@ -3,7 +3,7 @@ import os
 if os.environ.get("PORT"):
 
     # Service Configuration
-    SERVER_NAME = os.environ.get("HOST")
+    SERVER_NAME = "%s:%s" % os.environ.get("HOST"), os.environ.get("PORT")
 
     # Mongo Configuration
     MONGO_HOST = os.environ.get("MONGOHQ_HOST")
