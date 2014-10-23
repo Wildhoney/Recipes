@@ -1,14 +1,14 @@
 import os
 
 # Service Configuration
-SERVER_NAME = "localhost:%d" % int(os.environ["PORT"])
+SERVER_NAME = "0.0.0.0:%d" % int(os.environ["PORT"])
 
 # Mongo Configuration
-MONGO_HOST = os.environ["MONGOHQ_HOST"]
-MONGO_PORT = os.environ["MONGOHQ_PORT"]
-MONGO_USERNAME = os.environ["MONGOHQ_USER"]
-MONGO_PASSWORD = os.environ["MONGOHQ_PASS"]
-MONGO_DBNAME = os.environ["MONGOHQ_DBNAME"]
+MONGO_HOST = os.environ.get("MONGOHQ_HOST", "localhost")
+MONGO_PORT = os.environ.get("MONGOHQ_PORT", 27017)
+MONGO_USERNAME = os.environ.get("MONGOHQ_USER", "user")
+MONGO_PASSWORD = os.environ.get("MONGOHQ_PASS", "pass")
+MONGO_DBNAME = os.environ.get("MONGOHQ_DBNAME", "recipe")
 
 # API Configuration
 DOMAIN = {'people': {}}
