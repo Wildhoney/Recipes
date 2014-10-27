@@ -1,6 +1,6 @@
 {
   "name": "recipes",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Base Python API for a series of on-going \"Learn\" projects in various front-end frameworks.",
   "main": "gulpfile.js",
   "directories": {
