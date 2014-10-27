@@ -31,7 +31,7 @@ schema_recipes = {
 
 recipes = {
     'schema': schema_recipes,
-    'resource_methods': ['GET', 'POST']
+    'resource_methods': ['GET', 'POST', 'DELETE']
 }
 
 # API Configuration
