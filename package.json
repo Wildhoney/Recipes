@@ -1,5 +1,5 @@
 {
-  "name": "recipes",
+  "name": "recipes-app",
   "version": "0.1.1",
   "description": "Base Python API for a series of on-going \"Learn\" projects in various front-end frameworks.",
   "main": "gulpfile.js",
