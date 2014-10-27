@@ -127,10 +127,10 @@ section.container section.recipe-app section.recipe-form {
     position: absolute;
     width: 100%;
     bottom: 0;
-    /*height: 441px;*/
+    height: 441px;
     transition: height 0.35s;
 }
 
 section.container section.recipe-app:hover section.recipe-form {
-    height: 441px;
+    /*height: 441px;*/
 }
