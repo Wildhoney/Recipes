@@ -1,0 +1,22 @@
+{
+  "name": "recipes",
+  "version": "0.1.0",
+  "homepage": "https://github.com/Wildhoney/Recipes",
+  "authors": [
+    "Adam Timberlake <adam.timberlake@gmail.com>"
+  ],
+  "description": "Base Python API for a series of on-going \"Learn\" projects in various front-end frameworks.",
+  "main": "server/run.py",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "common/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "q": "~2.0.2"
+  }
+}

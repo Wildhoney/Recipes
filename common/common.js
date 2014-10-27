@@ -1,4 +1,4 @@
-(function($window, $jquery) {
+(function($window, $jquery, $q) {
 
     /**
      * @module Recipes
@@ -17,41 +17,68 @@
          * @constant API_URL
          * @type {String}
          */
-        API_URL: 'http://learn-api.herokuapp.com/recipes',
+        API_URL: 'http://recipes-learn-app.herokuapp.com/',
+
+        /**
+         * @method makeRequest
+         * @param path {String}
+         * @param [type='GET'] {String}
+         * @param [params={}] {Object}
+         * @return {Q.promise}
+         */
+        makeRequest: function makeRequest(path, type, params) {
+
+            var deferred = $q.defer();
+
+            $jquery.ajax({
+                url: this.APP_URL + path,
+                data: params || {},
+                dataType: 'json',
+                type: type || 'GET',
+                success: function success(response) {
+
+                deferred.resolve(response);
+
+            }.bind(this)});
+
+            return deferred.promise;
+            
+        },
 
         /**
          * @method addRecipe
          * @param name {String}
          * @param description {String}
          * @param ingredients {Array}
-         * @return {void}
+         * @return {Q.promise}
          */
         addRecipe: function addRecipe(name, description, ingredients) {
+
+            return this.makeRequest('recipes', 'POST', {
+                name:        name,
+                description: description,
+                ingredients: ingredients
+            });
 
         },
 
         /**
          * @method deleteRecipe
          * @param recipeModel {Object}
-         * @return {void}
+         * @return {Q.promise}
          */
         deleteRecipe: function deleteRecipe(recipeModel) {
-
+            return this.makeRequest('recipes/' + recipeModel._id, 'DELETE');
         },
 
         /**
          * @method getRecipes
-         * @return {Array}
+         * @return {Q.promise}
          */
         getRecipes: function getRecipes() {
-
-            $jquery.ajax({ url: this.APP_URL, dataType: 'json', success: function success(collection) {
-
-
-            }.bind(this)});
-
+            return this.makeRequest('recipes', 'GET');
         }
 
     };
 
-})(window, window.jQuery);
+})(window, window.jQuery, window.Q);

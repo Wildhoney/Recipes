@@ -1,2 +1,4 @@
 /.idea
 /env
+/common/vendor/*
+!/common/vendor/.gitkeep
