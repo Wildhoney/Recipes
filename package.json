@@ -1,6 +1,6 @@
 {
   "name": "recipes-app",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "Base Python API for a series of on-going \"Learn\" projects in various front-end frameworks.",
   "main": "gulpfile.js",
   "directories": {
@@ -12,6 +12,7 @@
     "gulp-jshint": "^1.8.5"
   },
   "devDependencies": {
+    "gulp-jsdoc": "^0.1.4",
     "gulp-karma": "0.0.4",
     "install": "^0.1.7",
     "karma": "^0.12.24",
