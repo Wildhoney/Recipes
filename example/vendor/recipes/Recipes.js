@@ -30,18 +30,23 @@
          */
         makeRequest: function makeRequest(path, type, params) {
 
+            /**
+             * @method success
+             * @return {void}
+             */
+            var success = function success(response) {
+                deferred.resolve(response);
+            }.bind(this);
+
             var deferred = $q.defer();
 
             $jquery.ajax({
-                url: this.APP_URL + path,
+                url: this.API_URL + path,
                 data: params || {},
                 dataType: 'json',
                 type: type || 'GET',
-                success: function success(response) {
-
-                deferred.resolve(response);
-
-            }.bind(this)});
+                success: success
+            });
 
             return deferred.promise;
             

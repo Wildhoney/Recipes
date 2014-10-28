@@ -1,20 +1,40 @@
 (function() {
 
-    var gulp   = require('gulp'),
-        jshint = require('gulp-jshint');
+    var gulp       = require('gulp'),
+        karma      = require('gulp-karma'),
+        jshint     = require('gulp-jshint');
+
+    gulp.task('karma', function gulpKarma() {
+
+        var testFiles = [
+            'example/vendor/jquery/dist/jquery.js',
+            'example/vendor/sinonjs/sinon.js',
+            'example/vendor/q/q.js',
+            'common/Recipes.js',
+            'tests/spec.js'
+        ];
+
+        return gulp.src(testFiles).pipe(karma({
+            configFile: 'karma.conf.js',
+            action: 'run'
+        })).on('error', function onError(error) {
+            throw error;
+        });
+    });
+
 
     gulp.task('build', function gulpBuild(){
-        gulp.src(['common/common.css', 'common/common.js'])
+        gulp.src(['common/Recipes.css', 'common/Recipes.js'])
             .pipe(gulp.dest('example/vendor/recipes'))
     });
 
     gulp.task('hint', function gulpHint() {
-        return gulp.src(['common/common.js'])
+        return gulp.src(['common/Recipes.js'])
             .pipe(jshint('.jshintrc'))
             .pipe(jshint.reporter('default'));
     });
 
-    gulp.task('test', ['hint']);
+    gulp.task('test', ['karma', 'hint']);
     gulp.task('default', ['test', 'build']);
 
 })();
