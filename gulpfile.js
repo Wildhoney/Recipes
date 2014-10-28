@@ -1,8 +1,16 @@
 (function() {
 
-    var gulp       = require('gulp'),
-        karma      = require('gulp-karma'),
-        jshint     = require('gulp-jshint');
+    var gulp   = require('gulp'),
+        karma  = require('gulp-karma'),
+        jshint = require('gulp-jshint'),
+        jsdoc  = require('gulp-jsdoc');
+    
+    gulp.task('jsdoc', function gulpJSDoc() {
+
+        gulp.src('common/Recipes.js')
+            .pipe(jsdoc('docs'))
+        
+    });
 
     gulp.task('karma', function gulpKarma() {
 
@@ -20,21 +28,26 @@
         })).on('error', function onError(error) {
             throw error;
         });
+        
     });
 
 
     gulp.task('build', function gulpBuild(){
+        
         gulp.src(['common/Recipes.css', 'common/Recipes.js'])
             .pipe(gulp.dest('example/vendor/recipes'))
+        
     });
 
     gulp.task('hint', function gulpHint() {
+        
         return gulp.src(['common/Recipes.js'])
             .pipe(jshint('.jshintrc'))
             .pipe(jshint.reporter('default'));
+        
     });
 
     gulp.task('test', ['karma', 'hint']);
-    gulp.task('default', ['test', 'build']);
+    gulp.task('default', ['test', 'build', 'jsdoc']);
 
 })();
