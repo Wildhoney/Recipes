@@ -1,5 +1,5 @@
 /.idea
 /env
 /node_modules
-/common/vendor/*
-!/common/vendor/.gitkeep
+example/vendor/*
+!example/vendor/.gitkeep
