@@ -2,7 +2,7 @@
 
     var API_URL = 'http://recipes-learn-app.herokuapp.com/';
 
-    beforeEach(function() {
+    beforeEach(function beforeEach() {
 
         expect(typeof RecipesInterface).toBe('function');
         expect(typeof RecipesInterface.prototype.makeRequest).toBe('function');
@@ -20,24 +20,22 @@
 
     });
 
-    afterEach(function() {
+    afterEach(function afterEach() {
 
         $jquery.ajax.restore();
 
     });
 
-    describe('Recipes', function() {
+    describe('Recipes', function Recipes() {
 
         it('Should be able to get the recipes;', function() {
 
             var recipeInterface = new RecipesInterface(),
                 mockResponse    = [1, 2, 3];
 
-            sinon.stub($jquery, 'ajax').yieldsTo('success', mockResponse);
+            sinon.stub($jquery, 'ajax').yieldsTo('successfulRequest', mockResponse);
             recipeInterface.getRecipes();
-
             var args = $jquery.ajax.getCall(0).args[0];
-            args.success(mockResponse);
 
             expect($jquery.ajax.calledOnce).toBeTruthy();
             expect(args.url).toEqual(API_URL + 'recipes');
@@ -45,7 +43,7 @@
             expect(args.dataType).toEqual('json');
 
             expect($jquery.ajax({
-                success: function success(data) {
+                successfulRequest: function successfulRequest(data) {
                     expect(data).toEqual(mockResponse);
                 }
             }));
@@ -58,11 +56,9 @@
                 mockResponse    = [1, 2, 3],
                 recipeModel     = { _id: 123, name: 'Chocolate Pudding' };
 
-            sinon.stub($jquery, 'ajax').yieldsTo('success', mockResponse);
+            sinon.stub($jquery, 'ajax').yieldsTo('successfulRequest', mockResponse);
             recipeInterface.deleteRecipe(recipeModel);
-
             var args = $jquery.ajax.getCall(0).args[0];
-            args.success(mockResponse);
 
             expect($jquery.ajax.calledOnce).toBeTruthy();
             expect(args.url).toEqual(API_URL + 'recipes/' + recipeModel._id);
@@ -70,7 +66,7 @@
             expect(args.dataType).toEqual('json');
 
             expect($jquery.ajax({
-                success: function success(data) {
+                successfulRequest: function successfulRequest(data) {
                     expect(data).toEqual(mockResponse);
                 }
             }));
@@ -87,11 +83,9 @@
                     ingredients: ['Chocolate', 'Pudding']
                 };
 
-            sinon.stub($jquery, 'ajax').yieldsTo('success', mockResponse);
+            sinon.stub($jquery, 'ajax').yieldsTo('successfulRequest', mockResponse);
             recipeInterface.addRecipe(recipeModel.name, recipeModel.description, recipeModel.ingredients);
-
             var args = $jquery.ajax.getCall(0).args[0];
-            args.success(mockResponse);
 
             expect($jquery.ajax.calledOnce).toBeTruthy();
             expect(args.url).toEqual(API_URL + 'recipes');
@@ -102,7 +96,7 @@
             expect(args.data.ingredients).toEqual(recipeModel.ingredients);
 
             expect($jquery.ajax({
-                success: function success(data) {
+                successfulRequest: function successfulRequest(data) {
                     expect(data).toEqual(mockResponse);
                 }
             }));
