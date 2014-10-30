@@ -22,4 +22,4 @@ deploy:
     secure: Bz55wx6qy2QJtMyay57xzkUjf/qfvmBR2slf1iTWoW4OfQJE60i3397ptpGs+RZxlWQn2iCc4SZdQbJ+q88cKb0iynGIm0wFXtG7jZlB7F36VSyJB6uv6rMC+d2oFZZs2oKzbbFh1f0Dlv5JWpm/eytBZ4a0Bof9BY9jWo6yaHY=
   app: learn-recipes
   on:
-    repo: Wildhoney/Learn
+    repo: Wildhoney/Recipes

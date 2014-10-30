@@ -56,7 +56,7 @@ curl -i http://localhost:5000/recipes
 
 **Delete:**
 
-<sub><sup>Assume that **`123456789`** is the model's primary key in MongoDB.</sup></sub>
+Assume that **`123456789`** is the model's primary key in MongoDB.
 
 ```shell
 curl -i http://localhost:5000/recipes/123456789
